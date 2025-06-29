@@ -5,10 +5,14 @@ from piece import Piece
 
 class Display:
   def __init__(self):
+    self.root = None
+    self.canvas = None
+    self.canvas_size = 480
+    self.reset()
+
+  def reset(self):
     self.root = tk.Tk()
     self.root.title("Stuckfish chessboard")
-    self.canvas_size = 480
-
     self.canvas = tk.Canvas(self.root, width=self.canvas_size, height=self.canvas_size)
     self.canvas.pack()
 
@@ -32,7 +36,7 @@ class Display:
             y1 + square_size // 2,
             text=piece.get_icon(),
             font=("Arial", square_size // 2),
-            fill="white" if piece.white else "black"
+            fill="white" if piece.color else "black"
           )
 
   def draw_moves(self, moves, color):
@@ -45,7 +49,6 @@ class Display:
         x_new, y_new = new_pos.get_coords()
         x2 = x_new * 60 + (28 if color == "blue" else 32)
         y2 = y_new * 60 + 30
-        # print(x1, y1, x2, y2)
         self.canvas.create_line(x1, y1, x2, y2, fill=color, width=2)
 
   def display(self):

@@ -45,10 +45,10 @@ class Pos:
     return True
 
   def __str__(self):
-    return '%s,%d' % Pos.coord_to_pos(self.x, self.y)
+    return '%s%d' % Pos.coord_to_pos(self.x, self.y)
 
   def __repr__(self):
-    return 'Pos(%s, %d)' % Pos.coord_to_pos(self.x, self.y)
+    return 'Pos(%s%d)' % Pos.coord_to_pos(self.x, self.y)
 
   def __eq__(self, other):
     return self.x == other.x and self.y == other.y

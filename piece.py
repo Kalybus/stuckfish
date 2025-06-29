@@ -18,28 +18,28 @@ class Piece(Slot):
   def __init__(self, name, icons, color):
     Slot.__init__(self, name)
     if color is None or color != "black":
-      self.white = True
+      self.color = True
     else:
-      self.white = False
+      self.color = False
     self.icons = icons
 
   def move(self, pos, dx, dy):
     return Pos(pos.x + dx, pos.y - dy) if self.is_white else Pos(pos.x - dx, pos.y + dy)
 
   def get_icon(self):
-    return self.icons[1 if self.white else 0]
+    return self.icons[1 if self.color else 0]
 
   @property
   def is_white(self):
-    return self.white
+    return self.color
 
   @property
   def is_black(self):
-    return not self.white
+    return not self.color
 
   @property
   def opposite_color(self):
-    return not self.white
+    return not self.color
 
 # Chessboard pieces
 class Pawn(Piece):

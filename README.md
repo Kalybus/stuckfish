@@ -13,6 +13,7 @@ $ python3 main.py
 ```
 
 ## Feature list
-- [ ] Compute all possible moves (except King)
-- [ ] Implement King check (compute enemy moves on king's position)
-- [ ] Implement attack strategy (find the best possible move)
+- [X] Compute all possible moves (except King)
+- [X] Implement King check (compute enemy moves on king's position)
+- [ ] Implement attack strategy (find the best possible move) based on minmax
+- [ ] Implement checkmate

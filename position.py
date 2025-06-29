@@ -50,6 +50,12 @@ class Pos:
   def __repr__(self):
     return 'Pos(%s, %d)' % Pos.coord_to_pos(self.x, self.y)
 
+  def __eq__(self, other):
+    return self.x == other.x and self.y == other.y
+
+  def __hash__(self):
+    return self.x * 10 + self.y
+
 class ChessPos(Pos):
   def __init__(self, a=0, b=0):
     super().__init__(*Pos.pos_to_coord(a, b))

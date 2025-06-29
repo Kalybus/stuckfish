@@ -12,7 +12,7 @@ if __name__ == '__main__':
   board.move(pawn1_pos, pawn1_newpos)
   #
   pawn2_pos = ChessPos("E", 7)
-  pawn2_newpos = ChessPos("E", 4)
+  pawn2_newpos = ChessPos("D", 3)
   board.move(pawn2_pos, pawn2_newpos)
 
   pawn3_pos = ChessPos("C", 7)
@@ -27,13 +27,22 @@ if __name__ == '__main__':
   pawn5_newpos = ChessPos("G", 5)
   board.move(pawn5_pos, pawn5_newpos)
 
-  pawn6_pos = ChessPos("E", 2)
-  pawn6_newpos = ChessPos("E", 3)
+  pawn6_pos = ChessPos("F", 2)
+  pawn6_newpos = ChessPos("F", 5)
   board.move(pawn6_pos, pawn6_newpos)
 
+  pawn6_pos = ChessPos("F", 8)
+  pawn6_newpos = ChessPos("F", 4)
+  board.move(pawn6_pos, pawn6_newpos)
 
   engine = StuckFishV1(board, True)
-  moves = engine.get_available_moves()
+  moves = engine.get_available_moves(engine.is_white)
+  moves_enemy = engine.get_available_moves(not engine.is_white)
 
   display = Display()
   display.draw(board)
+  display.draw_moves(moves, "blue")
+  display.draw_moves(moves_enemy, "red")
+
+
+  display.display()

@@ -31,7 +31,7 @@ class Pos:
       'G': 6,
       'H': 7,
     }
-    return col_mapper[a], 8 - b
+    return col_mapper[a.upper()], 8 - b
 
   def get_coords(self):
     return self.x, self.y
@@ -57,5 +57,16 @@ class Pos:
     return self.x * 10 + self.y
 
 class ChessPos(Pos):
-  def __init__(self, a=0, b=0):
-    super().__init__(*Pos.pos_to_coord(a, b))
+  # def __init__(self, a='A', b='1'):
+  #   super().__init__(*Pos.pos_to_coord(a, b))
+
+  def __init__(self, ab):
+    if ChessPos.is_pos(ab):
+      super().__init__(*Pos.pos_to_coord(ab[0], int(ab[1])))
+    else:
+      raise ValueError
+
+  @staticmethod
+  def is_pos(user_input):
+    user_input = user_input.upper()
+    return len(user_input) == 2 and user_input[0] in "ABCDEFGH" and user_input[1] in "12345678"
